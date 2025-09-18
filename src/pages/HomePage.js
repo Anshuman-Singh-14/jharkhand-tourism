@@ -36,6 +36,7 @@ export default function HomePage() {
   const [fadeState, setFadeState] = useState("fade-in"); // 'fade-in' or 'fade-out'
 
   const timeoutRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   const triggerFade = useCallback(
     (newIndex) => {
@@ -59,6 +60,21 @@ export default function HomePage() {
       clearTimeout(timeoutRef.current);
     };
   }, [currentIndex, triggerFade]);
+
+  // Hide dropdown if clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+    if (showDropdown) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showDropdown]);
 
   const prevImage = () => {
     triggerFade(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
@@ -88,17 +104,21 @@ export default function HomePage() {
           <button className="bookings-btn" onClick={() => navigate("/bookings")}>
             Bookings
           </button>
-          <div className="dropdown-wrapper">
+          <div className="dropdown-wrapper" ref={dropdownRef}>
             <button
-              className="sign-in-btn"
+              className="signin-btn"
               onClick={() => setShowDropdown(!showDropdown)}
             >
               Sign In
             </button>
             {showDropdown && (
               <div className="signin-dropdown">
-                <button onClick={() => window.open("/sign-in?type=vendor", "_blank")}>Vendor</button>
-                <button onClick={() => window.open("/sign-in?type=tourist", "_blank")}>Tourist</button>
+                <button onClick={() => window.open("/sign-in?type=vendor", "_blank")}>
+                  Vendor
+                </button>
+                <button onClick={() => window.open("/sign-in?type=tourist", "_blank")}>
+                  Tourist
+                </button>
               </div>
             )}
           </div>
