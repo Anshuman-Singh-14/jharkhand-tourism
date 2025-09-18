@@ -1,13 +1,24 @@
+:root {
+  --primary: #98FBCB;
+  --secondary: #BFFFED;
+  --tertiary: #7FCFA8;
+  --accent: #558B71;
+  --background: #BFFFED;
+  --text-dark: #23243A;
+  --text-light: #fff;
+}
+
+/* Root background and font */
 .marketplace-root {
   font-family: 'Inter', Arial, sans-serif;
-  background: #fff;
+  background: var(--background);
   min-height: 100vh;
 }
 
 /* Header */
 .market-header {
-  background-color: #4caf50;
-  color: #fff;
+  background-color: var(--accent);
+  color: var(--text-light);
   padding: 18px 40px;
   display: flex;
   align-items: center;
@@ -20,20 +31,22 @@
   font-weight: 700;
   font-size: 1.8rem;
   margin-right: 50px;
+  color: var(--secondary);
 }
 
 .market-header .nav a {
-  color: #fff;
+  color: var(--secondary);
   margin-right: 30px;
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: underline 0.3s ease;
+  transition: underline 0.3s ease, color 0.2s;
 }
 
 .market-header .nav a:hover,
 .market-header .nav a.active {
   text-decoration: underline;
+  color: var(--primary);
 }
 
 .market-header input[type="search"] {
@@ -43,6 +56,8 @@
   border: none;
   width: 220px;
   font-size: 1rem;
+  background: var(--primary);
+  color: var(--text-dark);
 }
 
 .market-header .cart-indicator {
@@ -50,18 +65,19 @@
   font-size: 1.8rem;
   position: relative;
   cursor: pointer;
+  color: var(--primary);
 }
 
 .market-header .cart-indicator .cart-count {
   position: absolute;
   top: -8px;
   right: -10px;
-  background: #f44336;
+  background: var(--accent);
   border-radius: 50%;
   padding: 2px 6px;
   font-size: 0.85rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--secondary);
 }
 
 /* Hero Section */
@@ -75,29 +91,30 @@
   font-size: 2.8rem;
   margin-bottom: 14px;
   font-weight: 700;
-  color: #222;
+  color: var(--accent);
 }
 
 .market-hero p {
   font-size: 1.25rem;
   margin-bottom: 25px;
-  color: #555;
+  color: var(--tertiary);
 }
 
 .market-hero .explore-btn-green {
-  background-color: #4caf50;
+  background-color: var(--primary);
   border: none;
-  color: white;
+  color: var(--text-dark);
   font-weight: 600;
   padding: 14px 36px;
   border-radius: 28px;
   cursor: pointer;
   font-size: 1.1rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.2s;
 }
 
 .market-hero .explore-btn-green:hover {
-  background-color: #45a045;
+  background-color: var(--accent);
+  color: var(--text-light);
 }
 
 .market-hero .market-category-row {
@@ -112,7 +129,7 @@
 
 .market-hero .market-category {
   width: 220px;
-  background-color: #d3e4cd;
+  background-color: var(--primary);
   border-radius: 18px;
   padding: 28px 12px;
   margin: 10px;
@@ -121,13 +138,13 @@
 .market-hero .market-category .market-category-main {
   font-weight: 700;
   font-size: 1.2rem;
-  color: #135e01;
+  color: var(--accent);
   margin-bottom: 6px;
 }
 
 .market-hero .market-category .market-category-sub {
   font-size: 1rem;
-  color: #317a06;
+  color: var(--tertiary);
 }
 
 /* Body */
@@ -141,22 +158,24 @@
 /* Filters Sidebar */
 .market-filters {
   flex: 1;
-  background: #fff;
+  background: var(--secondary);
   padding: 26px 20px;
   border-radius: 18px;
-  box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+  box-shadow: 0 3px 14px rgba(127,207,168,0.09);
   font-size: 1rem;
 }
 
 .market-filters h3 {
   font-weight: 700;
   margin-bottom: 24px;
+  color: var(--accent);
 }
 
 .market-filters label {
   font-weight: 600;
   margin-top: 16px;
   display: block;
+  color: var(--accent);
 }
 
 .market-filters input[type="checkbox"],
@@ -169,6 +188,7 @@
   width: 100%;
   margin-top: 12px;
   cursor: pointer;
+  accent-color: var(--primary);
 }
 
 .market-filters select {
@@ -176,9 +196,11 @@
   margin-top: 8px;
   padding: 8px;
   border-radius: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--tertiary);
   font-size: 1rem;
   cursor: pointer;
+  background: var(--secondary);
+  color: var(--text-dark);
 }
 
 /* Product Cards List */
@@ -190,10 +212,10 @@
 }
 
 .market-prod-card {
-  background: #fff;
+  background: var(--secondary);
   border-radius: 17px;
   padding: 22px 18px;
-  box-shadow: 0 3px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 16px rgba(127,207,168,0.08);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -201,8 +223,8 @@
 }
 
 .prod-verified {
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--primary);
+  color: var(--text-dark);
   font-weight: 700;
   font-size: 0.8rem;
   border-radius: 8px;
@@ -218,11 +240,11 @@
 
 .prod-main {
   margin-bottom: 18px;
-  color: #333;
+  color: var(--text-dark);
 }
 
 .prod-main span {
-  color: #555;
+  color: var(--accent);
   font-size: 0.85rem;
 }
 
@@ -232,22 +254,23 @@
 
 .prod-main em {
   font-size: 0.9rem;
-  color: #555;
+  color: var(--accent);
 }
 
 .prod-main small {
   font-size: 0.85rem;
-  color: #888;
+  color: var(--tertiary);
 }
 
 .prod-main .price {
   font-weight: 700;
   font-size: 1.1rem;
+  color: var(--accent);
 }
 
 .prod-main .nightly {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--tertiary);
   margin-left: 6px;
 }
 
@@ -257,11 +280,11 @@
 
 .prod-main .rating span {
   font-size: 1rem;
-  color: #ffc107;
+  color: #FFC107; /* gold stars for ratings */
 }
 
 .prod-main .rating .count {
-  color: #333;
+  color: var(--tertiary);
   font-size: 0.85rem;
   margin-left: 4px;
 }
@@ -278,26 +301,28 @@
   border: none;
   font-weight: 600;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.2s;
 }
 
 .prod-main .actions .add-btn {
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--primary);
+  color: var(--text-dark);
 }
 
 .prod-main .actions .add-btn:hover {
-  background-color: #45a045;
+  background-color: var(--accent);
+  color: var(--text-light);
 }
 
 .prod-main .actions .view-btn {
   background-color: transparent;
-  border: 1.5px solid #4caf50;
-  color: #4caf50;
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
 }
+
 .prod-main .actions .view-btn:hover {
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--primary);
+  color: var(--text-light);
 }
 
 /* Responsive */

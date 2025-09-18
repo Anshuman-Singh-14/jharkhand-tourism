@@ -1,9 +1,33 @@
 import React, { useState } from "react";
-import MapPanel from "../components/MapPanel"; // Make sure this path matches where you put MapPanel.js
+import MapPanel from "../components/MapPanel"; // ← This is your map component!
 import "./DestinationsPage.css";
 
+const sampleDestinations = [
+  {
+    name: "Dassam Falls",
+    district: "Ranchi District",
+    type: "Waterfall",
+    tags: ["Waterfall", "Nature"],
+    photo: "",
+  },
+  {
+    name: "Baba Badhyanath Temple",
+    district: "Deoghar District",
+    type: "Temple",
+    tags: ["Sacred", "Heritage"],
+    photo: "",
+  },
+  {
+    name: "Dalma Hills",
+    district: "Jamshedpur District",
+    type: "Waterfall",
+    tags: ["Hill Station", "Scenic"],
+    photo: "",
+  },
+];
+
 const categories = [
-  "All Destinations", "Hill Stations", "Waterfalls", "Sacred Sites", 
+  "All Destinations", "Hill Stations", "Waterfalls", "Sacred Sites",
   "Heritage", "Eco-Tours", "Cultural"
 ];
 
@@ -12,27 +36,6 @@ const filters = {
   districts: ["All Districts", "Ranchi", "Jamshedpur", "Deoghar"],
   ratings: ["Any Rating", "4.5+", "4.0+", "3.5+"],
 };
-
-const sampleDestinations = [
-  {
-    name: "Dassam Falls",
-    district: "Ranchi District",
-    type: "Waterfall",
-    tags: ["Waterfall", "Nature"],
-  },
-  {
-    name: "Baba Badhyanath Temple",
-    district: "Deoghar District",
-    type: "Temple",
-    tags: ["Sacred", "Heritage"],
-  },
-  {
-    name: "Dalma Hills",
-    district: "Jamshedpur District",
-    type: "Waterfall",
-    tags: ["Hill Station", "Scenic"],
-  },
-];
 
 export default function DestinationsPage() {
   const [search, setSearch] = useState("");
@@ -48,10 +51,10 @@ export default function DestinationsPage() {
           <a href="/marketplace">Marketplace</a>
           <a href="/bookings">Bookings</a>
         </nav>
-        <input 
-          className="search-global" 
-          type="text" 
-          placeholder="Search" 
+        <input
+          className="search-global"
+          type="text"
+          placeholder="Search"
           aria-label="Search Destinations"
         />
         <span className="icon-user" />
@@ -60,7 +63,7 @@ export default function DestinationsPage() {
       <section className="hero-box">
         <h1>Discover Jharkhand’s Hidden Gems</h1>
         <p>
-          From Cascading Waterfalls to sacred temples, explore the diverse landscape and rich heritage of Jharkhand through our curated destinations
+          From Cascading Waterfalls to sacred temples, explore the diverse landscape and rich heritage of Jharkhand through our curated destinations.
         </p>
         <div className="category-pills">
           {categories.map(category => (
@@ -99,8 +102,12 @@ export default function DestinationsPage() {
           <div className="avail-count">{sampleDestinations.length} destinations available</div>
           {sampleDestinations.map((dest, idx) => (
             <div key={idx} className="dest-card">
-              <div className="card-left">
-                <div className="type-badge">{dest.type}</div>
+              <div className="card-media">
+                {dest.photo ? (
+                  <img src={dest.photo} alt={dest.type} />
+                ) : (
+                  dest.type
+                )}
               </div>
               <div className="card-info">
                 <div className="dest-name">{dest.name}</div>
@@ -123,10 +130,10 @@ export default function DestinationsPage() {
         </div>
 
         <div className="map-panel">
-          <input 
-            className="search-destination" 
-            type="text" 
-            placeholder="Search Destination" 
+          <input
+            className="search-destination"
+            type="text"
+            placeholder="Search Destination"
             aria-label="Search Destination"
             value={search}
             onChange={e => setSearch(e.target.value)}
