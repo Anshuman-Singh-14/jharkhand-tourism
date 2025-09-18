@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MapPanel from "../components/MapPanel"; // ← This is your map component!
+import MapPanel from "../components/MapPanel";
 import "./DestinationsPage.css";
 
 const sampleDestinations = [
@@ -8,21 +8,21 @@ const sampleDestinations = [
     district: "Ranchi District",
     type: "Waterfall",
     tags: ["Waterfall", "Nature"],
-    photo: "",
+    photo: "/destinations-page images/Dassam.png",
   },
   {
     name: "Baba Badhyanath Temple",
     district: "Deoghar District",
     type: "Temple",
     tags: ["Sacred", "Heritage"],
-    photo: "",
+    photo: "/homepage-images/image2.png",
   },
   {
     name: "Dalma Hills",
     district: "Jamshedpur District",
     type: "Waterfall",
     tags: ["Hill Station", "Scenic"],
-    photo: "",
+    photo: "/destination images/park.jpg",
   },
 ];
 
@@ -72,42 +72,45 @@ export default function DestinationsPage() {
         </div>
       </section>
 
-      <section className="filter-box">
-        <select aria-label="Filter by Category">
-          {filters.categories.map(cat => (
-            <option key={cat}>{cat}</option>
-          ))}
-        </select>
-        <select aria-label="Filter by District">
-          {filters.districts.map(dis => (
-            <option key={dis}>{dis}</option>
-          ))}
-        </select>
-        <select aria-label="Filter by Ratings">
-          {filters.ratings.map(rat => (
-            <option key={rat}>{rat}</option>
-          ))}
-        </select>
-        <button aria-label="Accessible Filter">Accessible</button>
-        <button aria-label="AR/VR Available Filter">AR/VR available</button>
-        <button>Clear all</button>
-        <select aria-label="Sort Destinations">
-          <option>Sort by Popularity</option>
-          <option>Sort by Rating</option>
-        </select>
+      <section className="filter-box-section">
+        <div className="filter-box">
+          <select aria-label="Filter by Category">
+            {filters.categories.map(cat => (
+              <option key={cat}>{cat}</option>
+            ))}
+          </select>
+          <select aria-label="Filter by District">
+            {filters.districts.map(dis => (
+              <option key={dis}>{dis}</option>
+            ))}
+          </select>
+          <select aria-label="Filter by Ratings">
+            {filters.ratings.map(rat => (
+              <option key={rat}>{rat}</option>
+            ))}
+          </select>
+          <button aria-label="Accessible Filter">Accessible</button>
+          <button aria-label="AR/VR Available Filter">AR/VR available</button>
+          <button>Clear all</button>
+          <select aria-label="Sort Destinations">
+            <option>Sort by Popularity</option>
+            <option>Sort by Rating</option>
+          </select>
+        </div>
       </section>
 
       <section className="main-section">
-        <div className="dest-list">
-          <div className="avail-count">{sampleDestinations.length} destinations available</div>
-          {sampleDestinations.map((dest, idx) => (
-            <div key={idx} className="dest-card">
+        <div className="dest-list-panel">
+    <div className="dest-list">
+      <div className="avail-count black-box">{sampleDestinations.length} destinations available</div>
+      {sampleDestinations.map((dest, idx) => (
+        <div key={idx} className="dest-card">
               <div className="card-media">
-                {dest.photo ? (
-                  <img src={dest.photo} alt={dest.type} />
-                ) : (
-                  dest.type
-                )}
+                <img
+                  src={dest.photo || "/default.jpg"}
+                  alt={dest.name}
+                  className="card-img"
+                />
               </div>
               <div className="card-info">
                 <div className="dest-name">{dest.name}</div>
@@ -126,10 +129,12 @@ export default function DestinationsPage() {
                 View
               </button>
             </div>
+            
           ))}
         </div>
+        </div>
 
-        <div className="map-panel">
+        <div className="map-panel" style={{marginTop: "44px"}}>
           <input
             className="search-destination"
             type="text"

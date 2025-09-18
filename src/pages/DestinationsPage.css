@@ -1,5 +1,5 @@
 :root {
-  --primary-bg: #34C6A4;
+  --primary-bg: #000000;
   --secondary-bg: #FFFFFF;
   --card-accent: #145C56;
   --image-box-bg: linear-gradient(133deg, #B1EBDF 60%, #34C6A4 100%);
@@ -145,16 +145,24 @@
 }
 
 /* Filters box */
-.filter-box {
+.filter-box-section {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 0 30px 0;
   justify-content: center;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 32px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.filter-box {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 14px rgba(36,198,164,0.11);
+  padding: 18px 27px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;   /* ensures single line */
+  align-items: center;
+  max-width: 1200px;
 }
 
 .filter-box select,
@@ -168,8 +176,19 @@
   background: var(--tag-bg);
   box-shadow: 0 2px 8px rgba(23,99,91,0.14);
   cursor: pointer;
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
+
+/* Responsive for small screens, optional add: */
+@media (max-width: 900px) {
+  .filter-box-section,
+  .filter-box {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
 
 .filter-box button:hover,
 .filter-box select:focus {
@@ -191,12 +210,19 @@
 }
 
 /* ---------- Destination Cards Section ---------- */
-.dest-list {
-  flex: 2;
-  background: var(--primary-bg);
-  padding: 40px 0 64px 0;
-  border-radius: 0 0 32px 32px;
+.dest-list-panel {
+  background: var(--secondary-bg);
+  border-radius: 24px;
+  box-shadow: 0 2px 14px rgba(36,198,164,0.11);
+  padding: 32px 0px;
+  margin-bottom: 38px;
+  max-width: 880px;
+  width: 100%;
 }
+.dest-list {
+  padding: 0 38px 0 38px;
+}
+
 
 .avail-count {
   color: var(--secondary-bg);
@@ -415,4 +441,15 @@
     width: 100%;
     padding: 16px;
   }
+}
+.black-box {
+  background-color: #0d6954;
+  color: #ffffff;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.35rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  margin-bottom: 24px;
 }
